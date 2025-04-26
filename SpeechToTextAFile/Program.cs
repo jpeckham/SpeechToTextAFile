@@ -18,8 +18,8 @@ class Program
         // Set these to your Azure info
         string subscriptionKey = iconfig["ApiKey"];
         string serviceRegion = "eastus"; // based on your endpoint https://eastus.api.cognitive.microsoft.com/
-        string audioFilePath = @"C:\Users\james\Downloads\meeting1.wav";
-        string outputFilePath = @$"C:\Users\james\Downloads\meeting1transcription{DateTime.Now.ToString("yyyyMMddhhmmss")}.txt";
+        string audioFilePath = @"C:\Users\mike\Downloads\meeting1.wav";
+        string outputFilePath = @$"C:\Users\mike\Downloads\meeting1transcription{DateTime.Now.ToString("yyyyMMddhhmmss")}.txt";
         Console.WriteLine($"writing to {outputFilePath}");
         using StreamWriter outputFile = new StreamWriter(outputFilePath, append: false);
 
