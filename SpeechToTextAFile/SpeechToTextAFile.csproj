@@ -7,6 +7,12 @@
     <Nullable>enable</Nullable>
     <UserSecretsId>44748ca0-a123-4212-8f40-0dc0abf1ae39</UserSecretsId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.43.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.4" />

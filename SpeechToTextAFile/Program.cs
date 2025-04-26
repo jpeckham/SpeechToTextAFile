@@ -12,14 +12,20 @@ class Program
     {
         // Build configuration to access user secrets
         var iconfig = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
             .AddUserSecrets<Program>()
             .Build();
 
         // Set these to your Azure info
+        // Retrieve settings
         string subscriptionKey = iconfig["ApiKey"];
-        string serviceRegion = "eastus"; // based on your endpoint https://eastus.api.cognitive.microsoft.com/
-        string audioFilePath = @"C:\Users\james\Downloads\meeting1.wav";
-        string outputFilePath = @$"C:\Users\james\Downloads\meeting1transcription{DateTime.Now.ToString("yyyyMMddhhmmss")}.txt";
+        string serviceRegion = iconfig["AzureSettings:ServiceRegion"];
+        string audioFilePath = iconfig["AzureSettings:AudioFilePath"];
+        string outputFilePath = string.Format(
+            iconfig["AzureSettings:OutputFilePathTemplate"],
+            DateTime.Now.ToString("yyyyMMddhhmmss")
+        );
+
         Console.WriteLine($"writing to {outputFilePath}");
         using StreamWriter outputFile = new StreamWriter(outputFilePath, append: false);
 
